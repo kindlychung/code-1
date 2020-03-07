@@ -1,5 +1,5 @@
 struct Individual {
-  preference:
+  preference: f32,
   class: String,
 }
 
