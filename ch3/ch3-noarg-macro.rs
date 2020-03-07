@@ -1,20 +1,10 @@
-macro_rules! string {
-    ( $($x:expr) * ) => {
-        {
-            let mut s = String::new();
-            $(
-                let s0 = stringify!($x);
-                println!("Found: {}", &s0);
-                s.push_str(s0); // <2>
-                s.push(' ');
-            )*
-            s.pop();
-            s
-        }
-    };
+macro_rules! perma_string { // <1>
+    () => { // <2>
+        String::from("hello")
+    }
 }
 
 fn main() {
-    let s = string!(hello there how are you?);
+    let s = perma_string!();
     println!("{}", s);
 }
