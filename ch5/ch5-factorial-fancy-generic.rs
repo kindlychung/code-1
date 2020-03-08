@@ -1,12 +1,13 @@
-fn factorial<Int>(n: Int) -> Int {
-  match n {
-    0 => 0,
-    1 => 1,
-    _ => n + factorial(n-1),
-  }
+use num_traits::Num; 
+
+fn factorial<T: Num + Copy>(n: T) -> T {
+    if n.is_zero() {
+        T::one()
+    } else {
+        n * factorial(n - T::one())
+    }
 }
 
 fn main() {
-  let n = 10;
-  println!("{}", factorial(n));
+    println!("Generic: {}", factorial(5i64))
 }
